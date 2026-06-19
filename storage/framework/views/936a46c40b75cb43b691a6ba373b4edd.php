@@ -8,8 +8,8 @@
 <body style="background-color: #f3f4f6; margin: 0; padding: 0;">
     
     <main>
-        @yield('contenido')
+        <?php echo $__env->yieldContent('contenido'); ?>
     </main>
 
 </body>
-</html>
+</html><?php /**PATH C:\xampp\htdocs\test_vak\resources\views/layout/app.blade.php ENDPATH**/ ?>

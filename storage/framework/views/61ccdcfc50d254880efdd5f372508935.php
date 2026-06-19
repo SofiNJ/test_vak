@@ -1,6 +1,6 @@
-@extends('layout.app')
 
-@section('contenido')
+
+<?php $__env->startSection('contenido'); ?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
@@ -65,7 +65,8 @@
         </h2>
         
         <h1 class="estilo-destacado">
-            {{ $datos['ganador'] }}
+            <?php echo e($datos['ganador']); ?>
+
         </h1>
 
         <hr style="border-color: #e5e7eb; margin: 30px 0;">
@@ -77,39 +78,40 @@
         <div class="mb-4 text-start">
             <div class="d-flex justify-content-between mb-1">
                 <span class="etiqueta-porcentaje">Canal Visual</span>
-                <span class="etiqueta-porcentaje">{{ $datos['porcentaje_v'] }}%</span>
+                <span class="etiqueta-porcentaje"><?php echo e($datos['porcentaje_v']); ?>%</span>
             </div>
             <div class="barra-progreso-contenedor">
-                <div class="barra-progreso-llenado" style="width: {{ $datos['porcentaje_v'] }}%; background-color: #fca5c8;"></div>
+                <div class="barra-progreso-llenado" style="width: <?php echo e($datos['porcentaje_v']); ?>%; background-color: #fca5c8;"></div>
             </div>
         </div>
 
         <div class="mb-4 text-start">
             <div class="d-flex justify-content-between mb-1">
                 <span class="etiqueta-porcentaje">Canal Auditivo</span>
-                <span class="etiqueta-porcentaje">{{ $datos['porcentaje_a'] }}%</span>
+                <span class="etiqueta-porcentaje"><?php echo e($datos['porcentaje_a']); ?>%</span>
             </div>
             <div class="barra-progreso-contenedor">
-                <div class="barra-progreso-llenado" style="width: {{ $datos['porcentaje_a'] }}%; background-color: #ff98c1;"></div>
+                <div class="barra-progreso-llenado" style="width: <?php echo e($datos['porcentaje_a']); ?>%; background-color: #ff98c1;"></div>
             </div>
         </div>
 
         <div class="mb-5 text-start">
             <div class="d-flex justify-content-between mb-1">
                 <span class="etiqueta-porcentaje">Canal Kinestésico</span>
-                <span class="etiqueta-porcentaje">{{ $datos['porcentaje_k'] }}%</span>
+                <span class="etiqueta-porcentaje"><?php echo e($datos['porcentaje_k']); ?>%</span>
             </div>
             <div class="barra-progreso-contenedor">
-                <div class="barra-progreso-llenado" style="width: {{ $datos['porcentaje_k'] }}%; background-color: #ff8dbb;"></div>
+                <div class="barra-progreso-llenado" style="width: <?php echo e($datos['porcentaje_k']); ?>%; background-color: #ff8dbb;"></div>
             </div>
         </div>
 
         <div class="text-center">
-            <a href="{{ route('testvak.mostrar') }}" style="background-color: #ff9bc8; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 15px; transition: background 0.2s;">
+            <a href="<?php echo e(route('testvak.mostrar')); ?>" style="background-color: #ff9bc8; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 15px; transition: background 0.2s;">
                 Volver a realizar el Test
             </a>
         </div>
 
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\test_vak\resources\views/resultados_test_vak.blade.php ENDPATH**/ ?>

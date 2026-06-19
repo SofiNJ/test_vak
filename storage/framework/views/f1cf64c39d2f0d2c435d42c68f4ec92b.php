@@ -1,6 +1,6 @@
-@extends('layout.app')
 
-@section('contenido')
+
+<?php $__env->startSection('contenido'); ?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
     }
 </style>
 
-@php
+<?php
 $preguntas = [
     1 => [
         'texto' => '¿Cuál de las siguientes actividades disfrutas más?',
@@ -209,7 +209,7 @@ $preguntas = [
         'a' => 'Director de una estación de radio', 'b' => 'Director de un club deportivo', 'c' => 'Director de una revista'
     ]
 ];
-@endphp
+?>
 
 <div class="test-vak" style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
       
@@ -226,32 +226,33 @@ $preguntas = [
 
     <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(18, 26, 54, 0.2); border: 1px solid #e5e7eb;">
         
-        <form method="POST" action="{{ route('testvak.store') }}">
-            @csrf
+        <form method="POST" action="<?php echo e(route('testvak.store')); ?>">
+            <?php echo csrf_field(); ?>
 
-            @foreach($preguntas as $numero => $pregunta)
+            <?php $__currentLoopData = $preguntas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $numero => $pregunta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f3f4f6;">
                 
                     <p class="pregunta-titulo">
-                        {{ $numero }}. {{ $pregunta['texto'] }}
+                        <?php echo e($numero); ?>. <?php echo e($pregunta['texto']); ?>
+
                     </p>
                 
                     <label class="opcion-tarjeta">
-                        <input type="radio" name="pregunta{{ $numero }}" value="A" required style="margin-right: 12px; transform: scale(1.1);">
-                        <span style="color: #0e2060; font-size: 14px;">A. {{ $pregunta['a'] }}</span>
+                        <input type="radio" name="pregunta<?php echo e($numero); ?>" value="A" required style="margin-right: 12px; transform: scale(1.1);">
+                        <span style="color: #0e2060; font-size: 14px;">A. <?php echo e($pregunta['a']); ?></span>
                     </label>
 
                     <label class="opcion-tarjeta">
-                        <input type="radio" name="pregunta{{ $numero }}" value="B" style="margin-right: 12px; transform: scale(1.1);">
-                        <span style="color: #0e2060; font-size: 14px;">B. {{ $pregunta['b'] }}</span>
+                        <input type="radio" name="pregunta<?php echo e($numero); ?>" value="B" style="margin-right: 12px; transform: scale(1.1);">
+                        <span style="color: #0e2060; font-size: 14px;">B. <?php echo e($pregunta['b']); ?></span>
                     </label>
 
                     <label class="opcion-tarjeta">
-                        <input type="radio" name="pregunta{{ $numero }}" value="C" style="margin-right: 12px; transform: scale(1.1);">
-                        <span style="color: #0e2060; font-size: 14px;">C. {{ $pregunta['c'] }}</span>
+                        <input type="radio" name="pregunta<?php echo e($numero); ?>" value="C" style="margin-right: 12px; transform: scale(1.1);">
+                        <span style="color: #0e2060; font-size: 14px;">C. <?php echo e($pregunta['c']); ?></span>
                     </label>
                 </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             <div style="margin-top: 40px; text-align: right;">
                 <button type="submit" style="background-color: #022135; color: white; padding: 14px 32px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; transition: background 0.2s;">
@@ -261,4 +262,5 @@ $preguntas = [
         </form>
 
     </div> </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\test_vak\resources\views/mostrar_test_vak.blade.php ENDPATH**/ ?>
